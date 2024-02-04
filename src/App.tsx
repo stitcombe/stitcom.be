@@ -1,34 +1,59 @@
-import React, { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
-import './App.css';
+import React from 'react';
+import { Box, Flex, Heading, Image, keyframes, Icon } from '@chakra-ui/react';
+import { FaChevronDown } from 'react-icons/fa';
+import memoji from 'assets/memoji.png';
+
+// feature flags
+const showChevron = false;
+
+const chevronBounce = keyframes`
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+`;
 
 function App() {
-  const [count, setCount] = useState(0);
+  const chevronAnimation = `${chevronBounce} infinite 2s ease`;
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount(() => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Box>
+      <Flex
+        height={showChevron ? 'calc(100vh - 10vh)' : '100vh'}
+        minH="sm"
+        bgColor="gray.100"
+        justify="center"
+        align="center"
+        gap={6}
+        direction="column"
+      >
+        <Image src={memoji} alt="stephen's memoji" height="10em" />
+        <Heading
+          as="h1"
+          fontSize="6xl"
+          bgGradient="linear(to-l, #0071BE, #981D87)"
+          bgClip="text"
+          textAlign="center"
+          wordBreak="keep-all"
+        >
+          Hi, I&apos;m Stephen Titcombe.
+        </Heading>
+      </Flex>
+      {showChevron && (
+        <Flex justify="center" bgColor="gray.100">
+          <Icon
+            as={FaChevronDown}
+            mt={6}
+            animation={chevronAnimation}
+            boxSize={12}
+            _hover={{
+              animationPlayState: 'paused',
+            }}
+            color="gray.700"
+            cursor="pointer"
+          />
+        </Flex>
+      )}
+    </Box>
   );
 }
 
