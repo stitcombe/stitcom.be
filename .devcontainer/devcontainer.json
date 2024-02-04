@@ -1,0 +1,23 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "updateContentCommand": "pnpm install",
+  "postAttachCommand": "pnpm run dev",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["src/App.tsx"]
+    },
+    "vscode": {
+      "extensions": ["naumovs.theme-oceanicnext", "GitHub.codespaces"]
+    }
+  },
+  "portsAttributes": {
+    "5173": {
+      "label": "vite dev",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [5173]
+}

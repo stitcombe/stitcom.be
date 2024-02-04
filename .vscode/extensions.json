@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "mhutchie.git-graph",
+    "esbenp.prettier-vscode",
+    "visualstudioexptteam.vscodeintellicode",
+    "pflannery.vscode-versionlens",
+    "eamodio.gitlens",
+    "naumovs.theme-oceanicnext"
+  ]
+}
