@@ -21,7 +21,7 @@
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/styled": "^11.11.0",
-    "@tanstack/react-query": "^5.17.19",
+    "@tanstack/react-query": "^5.20.1",
     "@types/node": "^20.11.5",
     "framer-motion": "^11.0.3",
     "react": "^18.2.0",
