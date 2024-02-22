@@ -4,6 +4,7 @@ import { worker } from 'mocks/browser';
 import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
 import './index.css';
+import theme from './theme';
 
 if (import.meta.env.MODE === 'development') {
   worker.start();
@@ -11,7 +12,7 @@ if (import.meta.env.MODE === 'development') {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
   </React.StrictMode>
