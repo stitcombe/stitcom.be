@@ -1,6 +1,0 @@
-node_modules/
-build/
-coverage/
-html/
-vite-env.d.ts
-vite.config.ts
