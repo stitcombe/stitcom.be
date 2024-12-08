@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   Image,
-  keyframes,
   Icon,
   IconButton,
   Tooltip,
@@ -13,15 +12,6 @@ import { FaChevronDown } from 'react-icons/fa';
 import memoji from 'assets/memoji.png';
 import { VscGithubInverted } from 'react-icons/vsc';
 import { FaLinkedin, FaThreads } from 'react-icons/fa6';
-
-// feature flags
-const showChevron = false;
-
-const chevronBounce = keyframes`
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-  40% {transform: translateY(-10px);}
-  60% {transform: translateY(-5px);}
-`;
 
 function App() {
   const chevronAnimation = `${chevronBounce} infinite 2s ease`;
@@ -111,21 +101,6 @@ function App() {
           </Tooltip>
         </Flex>
       </Flex>
-      {showChevron && (
-        <Flex justify="center" bgColor="gray.100">
-          <Icon
-            as={FaChevronDown}
-            mt={6}
-            animation={chevronAnimation}
-            boxSize={12}
-            _hover={{
-              animationPlayState: 'paused',
-            }}
-            color="gray.700"
-            cursor="pointer"
-          />
-        </Flex>
-      )}
     </Box>
   );
 }
