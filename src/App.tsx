@@ -14,12 +14,10 @@ import { VscGithubInverted } from 'react-icons/vsc';
 import { FaLinkedin, FaThreads } from 'react-icons/fa6';
 
 function App() {
-  const chevronAnimation = `${chevronBounce} infinite 2s ease`;
-
   return (
     <Box>
       <Flex
-        height={showChevron ? 'calc(100vh - 10vh)' : '100vh'}
+        height='100vh'
         minH="sm"
         bgColor="gray.50"
         justify="center"
