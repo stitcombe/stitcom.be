@@ -1,43 +1,47 @@
 import React from 'react';
+import { LuCopy, LuCheck } from 'react-icons/lu'; // Using Lucide icons as an example
+import { Button } from '~/components/ui/button';
 import {
-  defineStyle,
-  defineStyleConfig,
-  IconButton,
   Tooltip,
-} from '@chakra-ui/react';
-import { MdDone } from 'react-icons/md';
-import { BiCopy } from 'react-icons/bi';
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '~/components/ui/tooltip';
+import useCopyToClipboard from '~/hooks/useCopyToClipboard'; // Assuming hook is in this location
 
-const noHover = defineStyle({
-  _hover: {},
-});
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const disableHover = defineStyleConfig({
-  variants: { noHover },
-});
+interface CopyToClipboardButtonProps {
+  textToCopy: string;
+  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
+}
 
 export default function CopyToClipboardButton({
-  onClick,
-  isCopied,
-}: {
-  onClick: () => void;
-  isCopied: boolean;
-}): JSX.Element {
+  textToCopy,
+  tooltipPosition = 'top',
+}: CopyToClipboardButtonProps): JSX.Element {
+  const [copyToClipboard, hasCopied] = useCopyToClipboard();
+
+  const handleCopy = () => {
+    copyToClipboard(textToCopy);
+  };
+
   return (
-    <Tooltip
-      hasArrow
-      label={isCopied ? 'Copied' : 'Click to copy'}
-      placement="top"
-      openDelay={isCopied ? 0 : 1000}
-    >
-      <IconButton
-        icon={isCopied ? <MdDone /> : <BiCopy />}
-        variant="disableHover"
-        aria-label="Copy to clipboard"
-        data-testid="copy-to-clipboard-button"
-        onClick={onClick}
-      />
-    </Tooltip>
+    <TooltipProvider>
+      <Tooltip delayDuration={hasCopied ? 0 : 1000}>
+        <TooltipTrigger asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label="Copy to clipboard"
+            data-testid="copy-to-clipboard-button"
+            onClick={handleCopy}
+          >
+            {hasCopied ? <LuCheck className="h-4 w-4" /> : <LuCopy className="h-4 w-4" />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side={tooltipPosition}>
+          <p>{hasCopied ? 'Copied!' : 'Copy to clipboard'}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

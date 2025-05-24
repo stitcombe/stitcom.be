@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Custom Scrollbar */
 body::-webkit-scrollbar {
   background-color: #fff;
