@@ -53,6 +53,7 @@ function App() {
                       variant="default"
                       size="icon"
                       className="rounded-full size-12 cursor-auto"
+                      aria-label="link button"
                     >
                       {link.icon}
                     </Button>
