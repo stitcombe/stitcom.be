@@ -1,50 +1,47 @@
-import React from 'react';
-import memoji from 'assets/memoji.png';
+import memoji from '@/assets/memoji.png';
 import { VscGithubInverted } from 'react-icons/vsc';
 import { FaLinkedin, FaThreads } from 'react-icons/fa6';
-import { Button } from '~/components/ui/button'; // Assuming shadcn/ui button is here
+import { Button } from '@/components/ui/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '~/components/ui/tooltip'; // Assuming shadcn/ui tooltip is here
+} from '@/components/ui/tooltip';
 
 function App() {
   const socialLinks = [
     {
       label: 'GitHub',
       href: 'https://github.com/stitcombe',
-      icon: <VscGithubInverted className="h-6 w-6" />, // Adjusted size with Tailwind
+      icon: <VscGithubInverted className='size-6' />,
     },
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/stephentitcombe/',
-      icon: <FaLinkedin className="h-5 w-5" />, // Adjusted size
+      icon: <FaLinkedin className='size-6' />,
     },
     {
       label: 'Threads',
       href: 'https://www.threads.net/@spault',
-      icon: <FaThreads className="h-6 w-6" />, // Adjusted size
+      icon: <FaThreads className='size-6' />,
     },
   ];
 
   return (
     <div>
-      <div
-        className="flex min-h-screen flex-col items-center justify-center gap-6 bg-gray-50"
-      >
-        <img src={memoji} alt="memoji" className="h-40" /> {/* 10em = h-40 (10rem) */}
+      <div className="flex min-h-screen flex-col items-center justify-center gap-8 bg-gray-50">
+        <img src={memoji} alt="memoji" className="h-40" />{' '}
         <h1
-          className="bg-gradient-to-l from-[#0071BE] to-[#981D87] bg-clip-text text-center text-6xl text-transparent"
-          style={{ wordBreak: 'keep-all' }} // word-break: keep-all is not directly in Tailwind, using style or a custom utility
+          className="text-primary bg-clip-text text-center text-6xl font-bold"
+          style={{ wordBreak: 'keep-all' }}
         >
           Hi, I&apos;m Stephen Titcombe.
         </h1>
         <div className="flex flex-row items-center justify-center gap-6">
           {socialLinks.map((link) => (
             <TooltipProvider key={link.href}>
-              <Tooltip delayDuration={500}>
+              <Tooltip delayDuration={500} >
                 <TooltipTrigger asChild>
                   <a
                     href={link.href}
@@ -53,15 +50,15 @@ function App() {
                     aria-label={link.label}
                   >
                     <Button
-                      variant="default" // Using default shadcn/ui solid variant
-                      size="lg" // Chakra 'lg' IconButton
-                      className="rounded-full w-12 h-12 p-0 flex items-center justify-center" // Ensure it's round and icon is centered
+                      variant="default"
+                      size="icon"
+                      className="rounded-full size-12 cursor-auto"
                     >
                       {link.icon}
                     </Button>
                   </a>
                 </TooltipTrigger>
-                <TooltipContent side="top">
+                <TooltipContent side="bottom">
                   <p>{link.label}</p>
                 </TooltipContent>
               </Tooltip>
