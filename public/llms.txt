@@ -1,0 +1,57 @@
+# Stephen Titcombe's Professional Profile
+
+## Overview
+Product management professional with 5+ years experience in Agile development teams and 8+ years in functional software testing. Subject matter expert in Healthcare and Financial transaction processing solutions with a proven track record of delivering high-impact product solutions.
+
+## Current Role & Recent Experience
+- **Senior Product Owner** at Abarca Health
+- Led greenfield product development projects
+- Managed 400% YoY volume increase (15M to 80M+ claims) resulting in $1M annual savings
+- Delivered 3 production applications and 3 proof-of-concept projects over 24 months
+- Reduced daily processing timelines by up to 10 hours through iterative user feedback
+
+## Core Expertise
+- **Product Management**: Product discovery, roadmap development, feature prioritization
+- **Agile Methodologies**: SAFe ceremonies, PI objectives, cross-team dependency coordination
+- **User Experience**: UI/UX design using Figma, user story mapping, wireframe creation
+- **Technical Skills**: SQL, ReactJS, TypeScript, Python, PostgreSQL, MongoDB
+- **Healthcare Technology**: EDI ANSI X12, NCPDP, claims processing, pharmacy benefit management
+- **Process Optimization**: Automated workflows, CI/CD expertise, system integration
+
+## Technical Proficiencies
+**Programming & Development**: Python, SQL, ReactJS, TypeScript, C#
+**Design & Prototyping**: Figma, Miro
+**Data & Analytics**: Alteryx Designer, Excel, SQL Server, PostgreSQL, MongoDB
+**DevOps & Tools**: Docker, Podman, GitHub Actions, Postman API, Jira, Confluence
+**Platforms**: SharePoint, Microsoft Office Suite
+
+## Industry Experience
+- **Healthcare Technology**: Pharmacy benefit management, claims processing, regulatory compliance
+- **Financial Services**: Investment management, brokerage operations, regulatory compliance
+- **Insurance**: Claims analysis, risk assessment, SOC2 compliance
+
+## Education & Certifications
+- **Bachelor's Degree**: Gustavus Adolphus College
+- **Study Abroad**: Rome, Italy (IES Abroad)
+- **Certifications**: Certified Scrum Master (Scrum Alliance), Product Management (Management & Strategy Institute)
+
+## Leadership & Collaboration
+- Cross-functional team leadership and mentoring
+- Stakeholder management across technical and business teams
+- Client relationship management and vendor coordination
+- Change management and process improvement initiatives
+
+## Professional Strengths
+- Rapid learning and technology adoption
+- Problem identification and solution-oriented thinking
+- Strong analytical and data-driven decision making
+- Excellent communication and documentation skills
+- Bridge between technical and business stakeholders
+
+## Professional Links
+- **GitHub**: https://github.com/stitcombe
+- **LinkedIn**: https://www.linkedin.com/in/stephentitcombe/
+- **Threads**: https://www.threads.net/@spault
+
+## Contact Context
+This profile represents a product management professional with deep expertise in healthcare technology and financial services, combining technical skills with strong business acumen and leadership capabilities.

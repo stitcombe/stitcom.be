@@ -14,17 +14,17 @@ function App() {
     {
       label: 'GitHub',
       href: 'https://github.com/stitcombe',
-      icon: <VscGithubInverted className='size-6' />,
+      icon: <VscGithubInverted className="size-6" />,
     },
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/stephentitcombe/',
-      icon: <FaLinkedin className='size-6' />,
+      icon: <FaLinkedin className="size-6" />,
     },
     {
       label: 'Threads',
       href: 'https://www.threads.net/@spault',
-      icon: <FaThreads className='size-6' />,
+      icon: <FaThreads className="size-6" />,
     },
   ];
 
@@ -41,7 +41,7 @@ function App() {
         <div className="flex flex-row items-center justify-center gap-6">
           {socialLinks.map((link) => (
             <TooltipProvider key={link.href}>
-              <Tooltip delayDuration={500} >
+              <Tooltip delayDuration={500}>
                 <TooltipTrigger asChild>
                   <a
                     href={link.href}

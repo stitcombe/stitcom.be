@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint src --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --fix && pnpm format",
-    "format": "prettier --write src",
+    "format": "pnpm dlx prettier --write src",
     "typecheck": "tsc -b",
     "up-interactive": "pnpm up -i",
     "up-latest": "pnpm up-interactive -L"
