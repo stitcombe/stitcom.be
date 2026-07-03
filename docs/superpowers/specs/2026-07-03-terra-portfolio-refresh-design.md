@@ -1,0 +1,92 @@
+# Terra-Style Portfolio Refresh — Design
+
+**Date:** 2026-07-03
+**Branch:** feat/reimagine
+**Status:** Approved
+
+## Purpose
+
+Refresh stitcom.be — Stephen Titcombe's personal Product Management portfolio — from a single-hero landing page into a lean, terra-style (terrahq.com-inspired) one-page portfolio: editorial typography, dark/light alternating sections, and a projects grid that can grow over time.
+
+## Scope
+
+A single-page site with five parts: sticky header, dark hero, light projects grid, marquee ticker, dark footer. One real project (cilantno) plus two placeholder cards. No routing, no CMS, no test framework, no analytics changes.
+
+Out of scope: project detail pages / case-study write-ups, an about/services section, testimonials, a contact form.
+
+## Page Design
+
+### Header (sticky)
+- Memoji (existing `src/assets/memoji.png`) at small size as the logo mark, left-aligned.
+- Right side: pill button "let's talk!" linking to LinkedIn (https://www.linkedin.com/in/stephentitcombe/).
+- Hides on scroll down, reappears on scroll up (translateY transition).
+- No nav menu.
+
+### Hero (dark, full viewport)
+- Background `#0F0F0F`, text `#FEFEFE`.
+- Oversized lowercase display headline, `clamp(4rem, 12vw, 9.5rem)`, DM Sans 700, line-height ~1.1.
+- Copy direction (owner may rewrite): "hi, i'm stephen." with subline "product manager. i build things worth using — and occasionally things worth playing."
+
+### Projects (light)
+- Background `#FEFEFE`. Section heading "selected work" (lowercase, clamp(2.5rem, 5vw, 4rem)).
+- 3-column CSS grid on desktop, 1 column on mobile.
+- Card 1 — **cilantno**: screenshot image, title, one-liner: "a game about picking the cilantro out of your salad. inspired by a colleague's daily lunch ritual." Entire card links to https://cilantno.loon.sh (new tab).
+- Cards 2–3 — placeholders: muted background, "coming soon" label, no link, no image. Visibly intentional.
+
+### Ticker (dark band)
+- Infinite CSS-keyframe marquee repeating "let's talk! ✦".
+- Content duplicated in the DOM so the `translateX(-50%)` loop is seamless.
+- Whole band is a link to LinkedIn. Animation pauses on hover.
+
+### Footer (dark, top border `rgba(254,254,254,0.15)` separating it from the ticker)
+- Name, three social icon buttons (GitHub, LinkedIn, Threads — same targets as today), small copyright line.
+- Replaces the current tooltip-wrapped social buttons.
+
+## Visual System
+
+- Palette: near-black `#0F0F0F` / near-white `#FEFEFE` only; no accent color. Borders at 15% opacity of the opposing color.
+- Typography: DM Sans 400/700 via Google Fonts `<link>` in `index.html`; Inter/system-ui fallback. All headings lowercase.
+- Spacing: 8px-multiple scale; section padding 120px (`7.5rem`) top/bottom on desktop.
+- Buttons: pill shape (`rounded-full`), 2px border, background/foreground swap on hover.
+
+## Technical Architecture
+
+### Stack
+Existing React 19 + TypeScript + Vite (rolldown) + Tailwind CSS 4 + shadcn/ui. The terra design language is translated into this stack; no single-file HTML output.
+
+### Tokens
+Terra tokens added to `src/index.css` via Tailwind 4 `@theme`: `--color-ink: #0F0F0F`, `--color-paper: #FEFEFE`, border-opacity variants. Existing shadcn CSS variables remain untouched.
+
+### Components
+`App.tsx` becomes a thin composition of section components in `src/components/sections/`:
+
+| Component | Responsibility |
+|---|---|
+| `SiteHeader.tsx` | Sticky header, hide-on-scroll-down scroll listener, memoji mark, LinkedIn pill CTA |
+| `Hero.tsx` | Dark display-typography hero |
+| `Projects.tsx` | Light section; maps `projects` data to cards and placeholders |
+| `Ticker.tsx` | Marquee band linking to LinkedIn |
+| `SiteFooter.tsx` | Socials + copyright |
+
+shadcn `Button` is reused for pill CTAs. The `Tooltip` component becomes unused but stays in `components/ui/`.
+
+### Data
+- `src/data/projects.ts` — typed array: `{ title: string; description: string; href: string; image: string } | { comingSoon: true }`. Adding a future project is a data edit, not a layout edit.
+- `src/data/socials.ts` — GitHub/LinkedIn/Threads links, shared by header, ticker, and footer.
+- cilantno screenshot copied into `src/assets/cilantno.png` (source: `/Users/stitcombe/.claude/image-cache/8dbdc9e1-6d0b-4c1a-82ac-a2110ecfece5/1.png`, provided in chat 2026-07-03).
+
+### Animation
+- `src/hooks/useReveal.ts` — IntersectionObserver (threshold 0.15) toggling an `is-visible` class; CSS handles opacity/translate transitions, with stagger delays for grid children.
+- Ticker is pure CSS keyframes.
+- Both respect `prefers-reduced-motion: reduce` — reveals render visible immediately; ticker animation is disabled with content still readable.
+
+### Error handling
+Static page. Images are bundled Vite imports, so a missing asset fails the build rather than the page.
+
+## Verification
+
+No test framework (repo has none; a static portfolio doesn't justify one). Definition of done:
+
+1. `pnpm typecheck`, `pnpm lint`, `pnpm build` all pass.
+2. Visual pass in `pnpm dev`: desktop and mobile widths; header hide/show; ticker loop seamless; reveal animations fire once per element; `prefers-reduced-motion` honored.
+3. All external links open in a new tab with `rel="noopener noreferrer"`.
