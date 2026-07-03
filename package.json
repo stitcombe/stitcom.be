@@ -16,6 +16,7 @@
     "up-latest": "pnpm up-interactive -L"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.17",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.1.18",
