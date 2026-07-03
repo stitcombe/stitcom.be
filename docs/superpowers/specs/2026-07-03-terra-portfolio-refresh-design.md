@@ -25,7 +25,7 @@ Out of scope: project detail pages / case-study write-ups, an about/services sec
 ### Hero (dark, full viewport)
 - Background `#0F0F0F`, text `#FEFEFE`.
 - Oversized lowercase display headline, `clamp(4rem, 12vw, 9.5rem)`, DM Sans 700, line-height ~1.1.
-- Copy direction (owner may rewrite): "hi, i'm stephen." with subline "product manager. i build things worth using — and occasionally things worth playing."
+- Copy direction (owner may rewrite): "hi there, i'm stephen." with subline "a full-stack product manager. i build things worth using — and occasionally things worth playing."
 
 ### Projects (light)
 - Background `#FEFEFE`. Section heading "selected work" (lowercase, clamp(2.5rem, 5vw, 4rem)).
@@ -33,10 +33,13 @@ Out of scope: project detail pages / case-study write-ups, an about/services sec
 - Card 1 — **cilantno**: screenshot image, title, one-liner: "a game about picking the cilantro out of your salad. inspired by a colleague's daily lunch ritual." Entire card links to https://cilantno.loon.sh (new tab).
 - Cards 2–3 — placeholders: muted background, "coming soon" label, no link, no image. Visibly intentional.
 
-### Ticker (dark band)
-- Infinite CSS-keyframe marquee repeating "let's talk! ✦".
+### Ticker (dark band) — employer logo marquee
+- Infinite CSS-keyframe marquee of previous-employer logos: Abarca Health, Prime Therapeutics, Travelers Insurance, LPL Financial, Thrivent Financial.
+- Small lowercase caption above the band: "places i've worked".
+- Logos sourced from public web sources (company brand/press pages, Wikimedia) at implementation time; SVG preferred. Rendered monochrome near-white at a uniform height (~32–40px) via white logo variants or CSS filter, separated by a "✦" marker.
 - Content duplicated in the DOM so the `translateX(-50%)` loop is seamless.
-- Whole band is a link to LinkedIn. Animation pauses on hover.
+- The band is not a link (the "let's talk!" CTA lives in the header pill; socials in the footer). Animation pauses on hover.
+- Note: corporate logos on a personal portfolio is nominative use and generally tolerated, but it is brand use without explicit permission; swap any logo for a text wordmark if a company objects or no usable asset is found.
 
 ### Footer (dark, top border `rgba(254,254,254,0.15)` separating it from the ticker)
 - Name, three social icon buttons (GitHub, LinkedIn, Threads — same targets as today), small copyright line.
@@ -65,14 +68,15 @@ Terra tokens added to `src/index.css` via Tailwind 4 `@theme`: `--color-ink: #0F
 | `SiteHeader.tsx` | Sticky header, hide-on-scroll-down scroll listener, memoji mark, LinkedIn pill CTA |
 | `Hero.tsx` | Dark display-typography hero |
 | `Projects.tsx` | Light section; maps `projects` data to cards and placeholders |
-| `Ticker.tsx` | Marquee band linking to LinkedIn |
+| `Ticker.tsx` | Employer logo marquee band |
 | `SiteFooter.tsx` | Socials + copyright |
 
 shadcn `Button` is reused for pill CTAs. The `Tooltip` component becomes unused but stays in `components/ui/`.
 
 ### Data
 - `src/data/projects.ts` — typed array: `{ title: string; description: string; href: string; image: string } | { comingSoon: true }`. Adding a future project is a data edit, not a layout edit.
-- `src/data/socials.ts` — GitHub/LinkedIn/Threads links, shared by header, ticker, and footer.
+- `src/data/socials.ts` — GitHub/LinkedIn/Threads links, shared by header and footer.
+- `src/data/employers.ts` — typed array `{ name: string; logo: string }` driving the ticker; logo files in `src/assets/logos/`.
 - cilantno screenshot copied into `src/assets/cilantno.png` (source: `/Users/stitcombe/.claude/image-cache/8dbdc9e1-6d0b-4c1a-82ac-a2110ecfece5/1.png`, provided in chat 2026-07-03).
 
 ### Animation
