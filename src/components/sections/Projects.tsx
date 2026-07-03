@@ -19,7 +19,7 @@ export function Projects() {
             <div
               key={`placeholder-${i}`}
               data-reveal
-              className="flex aspect-[4/3] items-center justify-center rounded-lg bg-ink/5 text-lg font-bold text-ink/40"
+              className="flex aspect-[4/3] items-center justify-center rounded-lg bg-ink/5 text-lg font-bold text-ink/55"
             >
               coming soon
             </div>
