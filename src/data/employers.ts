@@ -3,6 +3,7 @@ import primeLogo from "@/assets/logos/prime-therapeutics.svg";
 import travelersLogo from "@/assets/logos/travelers.svg";
 import lplLogo from "@/assets/logos/lpl-financial.svg";
 import thriventLogo from "@/assets/logos/thrivent.svg";
+import appleLogo from "@/assets/logos/apple.svg";
 
 export interface Employer {
 	name: string;
@@ -16,4 +17,5 @@ export const employers: Employer[] = [
 	{ name: "Travelers Insurance", logo: travelersLogo },
 	{ name: "LPL Financial", logo: lplLogo },
 	{ name: "Thrivent Financial", logo: thriventLogo },
+	{ name: "Apple", logo: appleLogo },
 ];

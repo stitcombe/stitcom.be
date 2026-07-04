@@ -5,6 +5,7 @@ import { linkedInUrl } from '@/data/socials';
 
 export function SiteHeader() {
   const [hidden, setHidden] = useState(false);
+  const [heroPassed, setHeroPassed] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -17,13 +18,34 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const hero = document.getElementById('top');
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeroPassed(!entry.isIntersecting && entry.boundingClientRect.top < 0);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between bg-ink/90 px-6 py-3 backdrop-blur transition-transform duration-300 md:px-12 ${
         hidden ? '-translate-y-full' : 'translate-y-0'
       }`}
     >
-      <a href="#top" aria-label="Back to top">
+      <a
+        href="#top"
+        aria-label="Back to top"
+        aria-hidden={!heroPassed}
+        tabIndex={heroPassed ? 0 : -1}
+        className={`transition-opacity duration-300 ${
+          heroPassed ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      >
         <img src={memoji} alt="Stephen Titcombe memoji" className="h-10" />
       </a>
       <Button
