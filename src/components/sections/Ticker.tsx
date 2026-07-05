@@ -5,7 +5,8 @@ export function Ticker() {
 		<section className="overflow-hidden bg-neutral-900 py-30 text-paper">
 			<h2
 				data-reveal
-				className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight px-6 md:px-12"
+				// className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight px-6 md:px-12"
+				className="text-[clamp(5rem,20vw,30vh)] font-bold letter-sp leading-[0.78] tracking-[-.075em] px-6 md:px-12"
 			>
 				my experience.
 			</h2>

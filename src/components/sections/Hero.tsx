@@ -10,9 +10,9 @@ export function Hero() {
 				<div className="w-fit">
 					<h1
 						data-reveal
-						className="w-fit text-[clamp(4rem,12vw,9.5rem)] font-bold leading-[1.1]"
+						className="w-fit text-[clamp(4rem,18vw,26vh)] font-bold letter-sp leading-[0.9] tracking-[-.075em]"
 					>
-						Hi, I&apos;m
+						hi, I&apos;m
 						<br />
 						Stephen.
 					</h1>

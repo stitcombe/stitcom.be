@@ -9,7 +9,7 @@ export function Projects() {
 		<section className="bg-paper px-6 py-30 text-ink md:px-12">
 			<h2
 				data-reveal
-				className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight"
+				className="text-[clamp(5rem,20vw,30vh)] font-bold letter-sp leading-[0.78] tracking-[-.075em]"
 			>
 				my work.
 			</h2>
